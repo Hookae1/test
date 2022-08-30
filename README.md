@@ -11,57 +11,67 @@
 
 # Solution
 
-1. Task
+### :one: Task
 
-### Create directory (Github) with file README.md
-
+#### Create directory (Github) with file README.md
+```
 mkdir /home/$USER/Github && touch README.md
-
-### Initialization of directory to Git
-
+```
+#### Initialization of directory to Git
+```
 git init -b main
-
-### Generating SSH key and using it for GitHub (place mail which are registered on github repo) and adding SSH key to ssh-agent
-
+```
+#### Generating SSH key and using it for GitHub (place mail which are registered on github repo) and adding SSH key to ssh-agent
+```
 ssh-keygen -t rsa -b 4096 -C "rybitskyiy@gmail.com"
-
 eval "$(ssh-agent -s)"
-
 ssh-add ~/.ssh/id_rsa
+```
+#### Copy public key into GH account and save it
 
-### Copy public key into GH account and save it
-
-### Initial commit, auth. in GitHub, create remote repository (name Github, public)
-
+#### Initial commit, auth. in GitHub, create remote repository (name Github, public)
+```
 git add README.md
-
 git commit -m "Initial commit"
-
 sudo apt install gh && gh auth login && gh repo create Github --public --source=. --remote=upstream --push
+```
 
-2. Task
+### :two: Task
 
-### To protect main branch its necessary to perfrom some actions on GitHub: Seeting - Branches - Add branches protection rule - Branch name - And define rule for pull request
+#### To protect main branch its necessary to perfrom some actions on GitHub: Seeting - Branches - Add branches protection rule - Branch name - And define rule for pull request
 
-### Create worker branch and set push option
-
+#### Create worker branch and set push option
+```
 git checkout -b worker && git push --set-upstream origin worker
-
-### Create file and push it
-
+```
+#### Create file and push it
+```
 sudo lshw -short > system.txt
-
 git add system.txt && git commit -m "added file system.txt" && git push
+```
+### :three: Task
 
-3. Task
-
-### Carry out merge worker branch into main
-
+#### Carry out merge worker branch into main
+```
 git checkout main && git merge worker
+```
+#### To execute of pull-request - following step-by-step on GitHub repository
 
-### To execute of pull-request - following step-by-step on GitHub repository
+### :four: Task
 
-4. Task
-
-
- 
+#### Before we continue, small hint: to have git log in a pretty format it nacily to use provided below git alias. After that to lookup in git log, write - git logline 
+```
+git config --global alias.logline "log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit"
+```
+#### Just for a looking for an old commit, use next:
+```
+git checkout commithash
+```
+#### If we want to roll-back with discarding any changes made after that commit, use next:
+```
+git reset commithash 
+```
+#### And if we want to take previous commit and add new commit after that, keeping log in tact, use next:
+```
+git revert commithash 
+```
