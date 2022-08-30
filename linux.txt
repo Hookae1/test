@@ -1,0 +1,11 @@
+ Static hostname: ip-172-31-95-79
+       Icon name: computer-vm
+         Chassis: vm
+      Machine ID: 7be22408c6c243d59c097e4b87b99796
+         Boot ID: 29a7fff88a3d406583f2e7997b317dc9
+  Virtualization: xen
+Operating System: Ubuntu 22.04.1 LTS
+          Kernel: Linux 5.15.0-1017-aws
+    Architecture: x86-64
+ Hardware Vendor: Xen
+  Hardware Model: HVM domU
